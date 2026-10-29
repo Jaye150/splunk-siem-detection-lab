@@ -12,7 +12,7 @@ A home SOC lab where I build and test detection rules in Splunk, mapped to the M
 | Detection | MITRE ATT&CK | Log source | Status |
 |-----------|--------------|------------|--------|
 | [Brute Force - Multiple Failed Logins](Detections/brute-force-4625.md) | T1110 | Windows Security (Event ID 4625) | Done |
-| New admin account created | T1136 | Windows Security (Event IDs 4720, 4732) | Planned |
+| [Persistence - User Added to Administrators Group](Detections/admin-group-4732.md) | T1136 | Windows Security (Event ID 4732) | Done |
 | Suspicious PowerShell | T1059.001 | Sysmon (Event ID 1) | Planned |
 
 ## Evidence: brute force detection firing
@@ -21,8 +21,18 @@ A home SOC lab where I build and test detection rules in Splunk, mapped to the M
 
 ![Detection results](screenshots/02-brute-force-results.png)
 
+## Evidence: admin group detection firing
+
+![Admin group alert triggered](screenshots/03-admin-group-alert-triggered.png)
+
+![Admin group detection results](screenshots/04-admin-group-results.png)
+
 ## What I learned
 - How to get Windows event logs and Sysmon data into Splunk
 - How to write SPL searches that count and filter events
 - How to turn a search into a scheduled alert and test that it works
 - Why alert tuning matters (thresholds, time windows, allowlists)
+- How to filter out noisy events (only alerting on the Administrators group, not every group change)
+- How to troubleshoot an alert that wasn't firing, using Splunk's scheduler logs (`index=_internal sourcetype=scheduler`)
+- Why Splunk can stop running searches when disk space runs low, and how to fix it
+- Why overlapping schedule and time windows cause duplicate alerts, and how throttling prevents them

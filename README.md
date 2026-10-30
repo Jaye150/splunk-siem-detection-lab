@@ -12,8 +12,7 @@ A home SOC lab where I build and test detection rules in Splunk, mapped to the M
 | Detection | MITRE ATT&CK | Log source | Status |
 |-----------|--------------|------------|--------|
 | [Brute Force - Multiple Failed Logins](Detections/brute-force-4625.md) | T1110 | Windows Security (Event ID 4625) | Done |
-| [Persistence - User Added to Administrators Group](Detections/admin-group-4732.md) | T1136 | Windows Security (Event ID 4732) | Done |
-| Suspicious PowerShell | T1059.001 | Sysmon (Event ID 1) | Planned |
+| [Persistence - User Added to Administrators Group](Detections/admin-group-4732.md) | T1136 | Windows Security (Event ID 4732) | Done || [Execution - Encoded PowerShell Command](Detections/encoded-powershell-sysmon1.md) | T1059.001 | Sysmon (Event ID 1) | Done |
 
 ## Evidence: brute force detection firing
 
@@ -27,6 +26,12 @@ A home SOC lab where I build and test detection rules in Splunk, mapped to the M
 
 ![Admin group detection results](screenshots/04-admin-group-results.png)
 
+## Evidence: encoded PowerShell detection firing
+
+![Encoded PowerShell alert triggered](screenshots/05-encoded-powershell-alert-triggered.png)
+
+![Encoded PowerShell detection results](screenshots/06-encoded-powershell-results.png)
+
 ## What I learned
 - How to get Windows event logs and Sysmon data into Splunk
 - How to write SPL searches that count and filter events
@@ -36,3 +41,4 @@ A home SOC lab where I build and test detection rules in Splunk, mapped to the M
 - How to troubleshoot an alert that wasn't firing, using Splunk's scheduler logs (`index=_internal sourcetype=scheduler`)
 - Why Splunk can stop running searches when disk space runs low, and how to fix it
 - Why overlapping schedule and time windows cause duplicate alerts, and how throttling prevents them
+

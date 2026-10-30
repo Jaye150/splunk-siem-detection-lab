@@ -12,7 +12,8 @@ A home SOC lab where I build and test detection rules in Splunk, mapped to the M
 | Detection | MITRE ATT&CK | Log source | Status |
 |-----------|--------------|------------|--------|
 | [Brute Force - Multiple Failed Logins](Detections/brute-force-4625.md) | T1110 | Windows Security (Event ID 4625) | Done |
-| [Persistence - User Added to Administrators Group](Detections/admin-group-4732.md) | T1136 | Windows Security (Event ID 4732) | Done || [Execution - Encoded PowerShell Command](Detections/encoded-powershell-sysmon1.md) | T1059.001 | Sysmon (Event ID 1) | Done |
+| [Persistence - User Added to Administrators Group](Detections/admin-group-4732.md) | T1136 | Windows Security (Event ID 4732) | Done |
+| [Execution - Encoded PowerShell Command](Detections/encoded-powershell-sysmon1.md) | T1059.001 | Sysmon (Event ID 1) | Done |
 
 ## Evidence: brute force detection firing
 
